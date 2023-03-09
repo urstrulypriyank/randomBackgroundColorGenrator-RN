@@ -68,14 +68,27 @@ function App(): JSX.Element {
     <SafeAreaView style={{flex: 1}}>
       <StatusBar backgroundColor={bgColor} hidden />
       <View style={[styles.mainContainer, {backgroundColor: bgColor}]}>
-        <View style={styles.btnContainer}>
+        <View style={{...styles.btnContainer, backgroundColor: 'white'}}>
           <TouchableOpacity
-            style={styles.btn}
+            style={{...styles.btn, margin: 10}}
             onPress={() => {
               randomBgGenrator();
             }}>
-            <Text>Click Me</Text>
+            <Text>Click Me To Genrate new color</Text>
           </TouchableOpacity>
+          <View>
+            <Text style={{color: 'grey'}}>Long Press to Copy hex code</Text>
+            <Text
+              selectable
+              style={{
+                color: 'black',
+                fontWeight: 'bold',
+                fontSize: 40,
+                textAlign: 'center',
+              }}>
+              {bgColor}
+            </Text>
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -84,11 +97,8 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: 'red',
-    width: '100%',
-    height: '100%',
+    flexDirection: 'column-reverse',
+    justifyContent: 'center',
   },
   btn: {
     backgroundColor: 'grey',
@@ -96,6 +106,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 10,
   },
-  btnContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  btnContainer: {
+    justifyContent: 'center',
+    borderRadius: 20,
+    alignItems: 'center',
+    flexDirection: 'column-reverse',
+  },
 });
 export default App;
